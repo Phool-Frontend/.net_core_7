@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ga.Data;
+using ga.Models.Country;
 
 namespace ga.Controllers
 {
@@ -75,14 +76,20 @@ namespace ga.Controllers
 
         //POST :::::: Add
         [HttpPost]
-        public async Task<ActionResult<Country>> PostCountry(Country country)
+        public async Task<ActionResult<Country>> PostCountry(CreateCountryDto createCountry)
         {
+            var country = new Country
+            {
+                Name = createCountry.Name,
+                ShortName = createCountry.ShortName
+            };
+
             _context.Countries.Add(country);
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetCountry", new { id = country.Id }, country);
         }
 
-        // DELETE api/countries/5
+        //DELETE :::::: Delete
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCountry(int id)
         {

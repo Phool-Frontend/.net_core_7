@@ -222,3 +222,11 @@ Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP meth
 2023-11-25 13:18:16.302 -05:00 [INF] HTTP PUT /Countries/1 responded 400 in 441.7609 ms
 2023-11-25 13:18:24.804 -05:00 [INF] HTTP PUT /Countries/1 responded 204 in 3300.5868 ms
 2023-11-25 13:18:53.911 -05:00 [INF] HTTP GET /Countries responded 200 in 598.1196 ms
+2023-11-25 14:05:18.630 -05:00 [INF] Now listening on: https://localhost:7003
+2023-11-25 14:05:18.691 -05:00 [INF] Now listening on: http://localhost:5287
+2023-11-25 14:05:18.704 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-25 14:05:18.707 -05:00 [INF] Hosting environment: Development
+2023-11-25 14:05:18.709 -05:00 [INF] Content root path: C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga
+2023-11-25 14:06:07.052 -05:00 [INF] HTTP POST /Countries responded 201 in 4132.8656 ms
+2023-11-25 14:06:22.954 -05:00 [INF] HTTP POST /Countries responded 400 in 30.0989 ms
+2023-11-25 14:07:57.133 -05:00 [INF] HTTP POST /Countries responded 201 in 159.9804 ms
