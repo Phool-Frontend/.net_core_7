@@ -13,6 +13,8 @@ namespace ga.Data
         [ForeignKey(nameof(CountryId))]
         public int CountryId { get; set; }
         public Country Country { get; set; }
+
+        //You can detect change in here
     }
 }
 
