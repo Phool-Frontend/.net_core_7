@@ -21,16 +21,17 @@ namespace ga.Controllers
             _context = context;
         }
 
-        //GET: api/Countries
+        //GET :::::: All
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
-        {
-            return await _context.Countries.ToListAsync();
+        {   
+            var countries = await _context.Countries.ToListAsync();// Select * from Countries
+            return Ok(countries);
         }
 
-        //GET: api/Countries/5
+        //GET :::::: FindOne
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountry(int id)
+        public async Task<ActionResult<Country>> GetCountry(int id)
         {
             var country = await _context.Countries.FindAsync(id);
 
@@ -38,11 +39,11 @@ namespace ga.Controllers
             {
                 return NotFound();
             }
-            return NotFound();
+
+            return Ok(country);
         }
 
-        // PUT: api/Countries/5
-        // To protect from overposting attacks, see ....
+        //PUT :::::: Update 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCountry(int id, Country country)
         {
@@ -72,7 +73,7 @@ namespace ga.Controllers
             return NoContent();
         }
 
-        // POST: api/Countries
+        //POST :::::: Add
         [HttpPost]
         public async Task<ActionResult<Country>> PostCountry(Country country)
         {
