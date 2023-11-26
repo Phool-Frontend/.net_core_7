@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ga.Data;
 using ga.Models.Country;
+using AutoMapper;
 
 namespace ga.Controllers
 {
@@ -16,44 +17,56 @@ namespace ga.Controllers
     {
 
         private readonly HotelListingDbContext _context;
-        
-        public CountriesController(HotelListingDbContext context)
+        private readonly IMapper _mapper;
+
+        public CountriesController(HotelListingDbContext context, IMapper mapper)
         {
             _context = context;
+            this._mapper = mapper;
         }
 
         //GET :::::: All
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
+        public async Task<ActionResult<IEnumerable<GetCountryDto>>> GetCountries()
         {   
             var countries = await _context.Countries.ToListAsync();// Select * from Countries
-            return Ok(countries);
+            var records = _mapper.Map<List<GetCountryDto>>(countries);
+            return Ok(records);
         }
 
         //GET :::::: FindOne
         [HttpGet("{id}")]
-        public async Task<ActionResult<Country>> GetCountry(int id)
+        public async Task<ActionResult<CountryDto>> GetCountry(int id)
         {
-            var country = await _context.Countries.FindAsync(id);
+            var country = await _context.Countries.Include(q => q.Hotels).FirstOrDefaultAsync(q => q.Id == id);
 
             if (country == null)
             {
                 return NotFound();
             }
 
+            var countryDto = _mapper.Map<CountryDto>(country);
+
             return Ok(country);
         }
 
         //PUT :::::: Update 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCountry(int id, Country country)
+        public async Task<IActionResult> PutCountry(int id, UpdateCountryDto UpdateCountryDto)
         {
-            if(id != country.Id)
+            if(id != UpdateCountryDto.Id)
             {
                 return BadRequest("Invalid Record Id");
             }
 
-            _context.Entry(country).State = EntityState.Modified;
+            //_context.Entry(UpdateCountryDto).State = EntityState.Modified;
+            var country = await _context.Countries.FindAsync(id);
+            if (country == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(UpdateCountryDto, country);
 
             try
             {
@@ -76,16 +89,14 @@ namespace ga.Controllers
 
         //POST :::::: Add
         [HttpPost]
-        public async Task<ActionResult<Country>> PostCountry(CreateCountryDto createCountry)
+        public async Task<ActionResult<Country>> PostCountry(CreateCountryDto createCountryDto)
         {
-            var country = new Country
-            {
-                Name = createCountry.Name,
-                ShortName = createCountry.ShortName
-            };
+           
+            var country = _mapper.Map<Country>(createCountryDto);
 
             _context.Countries.Add(country);
             await _context.SaveChangesAsync();
+
             return CreatedAtAction("GetCountry", new { id = country.Id }, country);
         }
 

@@ -1,3 +1,4 @@
+using ga.Configurations;
 using ga.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -24,6 +25,7 @@ builder.Services.AddCors(options =>
 
 builder.Host.UseSerilog((ctx, lc)=> lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 
+builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 var app = builder.Build();//Upload mano :v
 

@@ -281,3 +281,5 @@ C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga\bin\Debug\net7.0\zh-Hans\Mi
 C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga\obj\Debug\net7.0\ga.RazorAssemblyInfo.cache
 C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga\obj\Debug\net7.0\ga.RazorAssemblyInfo.cs
+C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
