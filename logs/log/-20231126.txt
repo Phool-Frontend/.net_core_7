@@ -1,0 +1,8 @@
+2023-11-26 00:13:13.194 -05:00 [INF] Now listening on: https://localhost:7003
+2023-11-26 00:13:13.223 -05:00 [INF] Now listening on: http://localhost:5287
+2023-11-26 00:13:13.231 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-26 00:13:13.232 -05:00 [INF] Hosting environment: Development
+2023-11-26 00:13:13.233 -05:00 [INF] Content root path: C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga
+2023-11-26 00:13:26.290 -05:00 [INF] HTTP POST /Countries responded 201 in 4236.0599 ms
+2023-11-26 00:13:32.538 -05:00 [INF] HTTP GET /Countries responded 200 in 514.4879 ms
+2023-11-26 00:13:43.005 -05:00 [INF] HTTP GET /Countries/10 responded 200 in 362.9921 ms

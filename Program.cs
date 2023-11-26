@@ -1,5 +1,7 @@
 using ga.Configurations;
+using ga.Contracts;
 using ga.Data;
+using ga.Repository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -27,7 +29,11 @@ builder.Host.UseSerilog((ctx, lc)=> lc.WriteTo.Console().ReadFrom.Configuration(
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 
-var app = builder.Build();//Upload mano :v
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
