@@ -6,3 +6,11 @@
 2023-11-26 00:13:26.290 -05:00 [INF] HTTP POST /Countries responded 201 in 4236.0599 ms
 2023-11-26 00:13:32.538 -05:00 [INF] HTTP GET /Countries responded 200 in 514.4879 ms
 2023-11-26 00:13:43.005 -05:00 [INF] HTTP GET /Countries/10 responded 200 in 362.9921 ms
+2023-11-26 00:27:45.511 -05:00 [INF] Now listening on: https://localhost:7003
+2023-11-26 00:27:45.541 -05:00 [INF] Now listening on: http://localhost:5287
+2023-11-26 00:27:45.550 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-26 00:27:45.552 -05:00 [INF] Hosting environment: Development
+2023-11-26 00:27:45.552 -05:00 [INF] Content root path: C:\Users\Phool Herrera\Desktop\Course\.net core 7\ga
+2023-11-26 00:29:11.089 -05:00 [INF] HTTP GET /Hotels responded 404 in 4.0315 ms
+2023-11-26 00:29:22.802 -05:00 [INF] HTTP GET /Hotels responded 404 in 0.7404 ms
+2023-11-26 00:30:20.790 -05:00 [INF] HTTP GET /api/Hotels responded 200 in 3633.0299 ms
