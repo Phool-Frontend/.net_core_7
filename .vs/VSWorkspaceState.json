@@ -1,4 +1,9 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\Models",
+    "\\Models\\Country",
+    "\\Models\\Hotel"
+  ],
   "PreviewInSolutionExplorer": false
 }
