@@ -1,0 +1,8 @@
+2023-11-28 08:45:42.562 -05:00 [INF] HTTP GET /api/Hotels responded 200 in 3820.2222 ms
+2023-11-28 08:46:28.198 -05:00 [INF] HTTP POST /api/Hotels responded 201 in 560.8542 ms
+2023-11-28 08:46:40.529 -05:00 [INF] HTTP GET /api/Hotels/4 responded 200 in 163.3535 ms
+2023-11-28 08:47:25.629 -05:00 [INF] HTTP PUT /api/Hotels/10 responded 400 in 20.1712 ms
+2023-11-28 08:47:33.702 -05:00 [INF] HTTP PUT /api/Hotels/4 responded 204 in 22.3930 ms
+2023-11-28 08:47:37.968 -05:00 [INF] HTTP GET /api/Hotels responded 200 in 3.6774 ms
+2023-11-28 08:48:03.843 -05:00 [INF] HTTP DELETE /api/Hotels/4 responded 204 in 28.0433 ms
+2023-11-28 08:48:09.414 -05:00 [INF] HTTP GET /api/Hotels responded 200 in 27.6491 ms
