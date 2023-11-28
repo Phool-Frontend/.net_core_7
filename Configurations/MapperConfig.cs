@@ -2,6 +2,7 @@
 using ga.Data;
 using ga.Models.Country;
 using ga.Models.Hotel;
+using ga.Models.Users;
 
 namespace ga.Configurations
 {
@@ -16,6 +17,8 @@ namespace ga.Configurations
 
             CreateMap<Hotel, HotelDto>().ReverseMap();
             CreateMap<Hotel, CreateHotelDto>().ReverseMap();
+
+            CreateMap<ApiUserDto, ApiUser>().ReverseMap();
         }
     }
 }
