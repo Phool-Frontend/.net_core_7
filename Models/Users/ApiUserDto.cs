@@ -10,19 +10,4 @@ namespace ga.Models.Users
         public string LastName { get; set; }
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
