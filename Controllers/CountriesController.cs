@@ -9,6 +9,7 @@ using ga.Data;
 using ga.Models.Country;
 using AutoMapper;
 using ga.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ga.Controllers
 {
@@ -37,6 +38,7 @@ namespace ga.Controllers
 
         //GET :::::: FindOne
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<CountryDto>> GetCountry(int id)
         {
             var country = await _countriesRepository.GetDetails(id);
@@ -90,6 +92,7 @@ namespace ga.Controllers
 
         //POST :::::: Add
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Country>> PostCountry(CreateCountryDto createCountryDto)
         {
            
@@ -102,6 +105,7 @@ namespace ga.Controllers
 
         //DELETE :::::: Delete
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
             var country = await _countriesRepository.GetAsync(id);

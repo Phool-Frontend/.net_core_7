@@ -1,6 +1,7 @@
 ﻿
 using ga.Contracts;
 using ga.Models.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace ga.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IAuthManager _authManager;
@@ -47,11 +49,11 @@ namespace ga.Controllers
         {
             var authResponse = await _authManager.Login(loginDto);
 
-            if (!isValidUser)
+            if (authResponse == null)
             {
                 return Unauthorized();
             }
-            return Ok();
+            return Ok(authResponse);
         }
     }
 }

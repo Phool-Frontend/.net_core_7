@@ -9,11 +9,13 @@ using ga.Data;
 using ga.Contracts;
 using AutoMapper;
 using ga.Models.Hotel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ga.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HotelsController : ControllerBase
     {
 
@@ -28,6 +30,7 @@ namespace ga.Controllers
 
         // GET: api/Hotels
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<HotelDto>>> GetHotels()
         {
             var hotels = await _hotelsRepository.GetAllAsync();
