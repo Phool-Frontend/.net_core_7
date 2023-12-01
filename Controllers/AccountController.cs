@@ -13,9 +13,12 @@ namespace ga.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAuthManager _authManager;
-        public AccountController(IAuthManager authManager)
+        private readonly ILogger<AccountController> _logger;
+
+        public AccountController(IAuthManager authManager, ILogger<AccountController> logger)
         {
             this._authManager = authManager;
+            this._logger = logger;
         }
 
         // POST: api/Account/register
@@ -26,28 +29,31 @@ namespace ga.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult> Register([FromBody] ApiUserDto apiUserDto)
         {
-            var errors = await _authManager.Register(apiUserDto);
+            _logger.LogInformation($"Registration attempt for {apiUserDto.Email}");
+           
+                var errors = await _authManager.Register(apiUserDto);
 
-            if (errors.Any())
-            {
-                foreach (var error in errors)
+                if (errors.Any())
                 {
-                    ModelState.AddModelError(error.Code, error.Description);
+                    foreach (var error in errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                    return BadRequest(ModelState);
                 }
-                return BadRequest(ModelState);
-            }
-            return Ok(apiUserDto);
+
+                return Ok();
         }
 
-        // POST: api/Account/register
+        // POST: api/Account/refreshtoken
         [HttpPost]
-        [Route("login")]
+        [Route("refreshtoken")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
+        public async Task<ActionResult> RefreshToken([FromBody] AuthResponseDto request)
         {
-            var authResponse = await _authManager.Login(loginDto);
+            var authResponse = await _authManager.VerifyRefreshToken(request);
 
             if (authResponse == null)
             {
@@ -55,5 +61,26 @@ namespace ga.Controllers
             }
             return Ok(authResponse);
         }
+
+        // POST: api/Account/login
+        [HttpPost]
+        [Route("login")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            _logger.LogInformation($"Login Attempt for {loginDto.Email}");
+            var authResponse = await _authManager.Login(loginDto);
+
+                if (authResponse == null)
+                {
+                    return Unauthorized();
+                }
+
+                return Ok(authResponse);
+        }
+
+
     }
 }
