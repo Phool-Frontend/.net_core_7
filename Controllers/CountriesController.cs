@@ -14,7 +14,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace ga.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{version:apiVersion}/countries")]
+    [ApiVersion("1.0", Deprecated = true)]
     public class CountriesController : ControllerBase
     {
 

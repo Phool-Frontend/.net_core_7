@@ -14,15 +14,16 @@ using Microsoft.AspNetCore.Authorization;
 namespace ga.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class CountriesController : ControllerBase
+    [Route("api/v[version:apiVersion]countries")]
+    [ApiVersion("2.0", Deprecated = true)]
+    public class CountriesV2Controller : ControllerBase
     {
 
         private readonly IMapper _mapper;
         private readonly ICountriesRepository _countriesRepository;
         private readonly ILogger<CountriesController> _logger;
 
-        public CountriesController(IMapper mapper, ICountriesRepository _countriesRepository,
+        public CountriesV2Controller(IMapper mapper, ICountriesRepository _countriesRepository,
             ILogger<CountriesController> logger)
         {
             this._mapper = mapper;
